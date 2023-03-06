@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 #Set fonts
 NORM=`tput sgr0`
 BOLD=`tput bold`
@@ -12,11 +10,11 @@ function show_usage () {
 }
 
 function show_help () {
-    echo -e "${BOLD}visum.sh${NORM}: Moves the data as outputs"\\n
+    echo -e "${BOLD}entrypoint.sh${NORM}: Moves the data as outputs"\\n
     show_usage
     echo -e "\n${BOLD}Required arguments:${NORM}"
-    echo -e "${REV}customer-path${NORM}\t\t the path of the persons file"
-    echo -e "${REV}journey-path${NORM}\t\t the path of the homes file"
+    echo -e "${REV}persons-path${NORM}\t\t the path of the persons file"
+    echo -e "${REV}homes-path${NORM}\t\t the path of the homes file"
     echo -e "${REV}out-dir${NORM}\t\t\t the output directory"\\n
     echo -e "${BOLD}Optional arguments:${NORM}"
     echo -e "${REV}-v${NORM}\tSets verbosity level"
@@ -57,7 +55,7 @@ shift "$(($OPTIND -1))"
 leftovers=(${@})
 fpersons=${leftovers[0]}
 fhomes=${leftovers[1]}
-outdir=${leftovers[2]}
+outdir=${leftovers[2]%/}
 
 ####################################################################################################
 # Input checks                                                                                     #
@@ -79,4 +77,4 @@ fi
 cp ${fpersons} ${outdir}/persons.csv
 cp ${fhomes} ${outdir}/homes.gpkg
 
-[ $verbose -eq 1 ] && echo "output: $(ls ${outdir})"
+[ $verbose -eq 1 ] && echo -e "output:\n$(ls -ld -1 ${outdir}/*)"
