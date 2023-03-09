@@ -1,0 +1,95 @@
+{
+    "name": "SynPop-2-ParcelsIRTX",
+    "description":"Connects the output of the SynPop model to the input of the Parcels-IRTX model",
+    "version": "1.0.0",
+    "status":"draft",
+    "dockerImage":"registry.gitlab.com/inlecom/lead/models/synpop-2-parcels-irtx:latest",
+    "url": "https://gitlab.com/inlecom/lead/models/synpop-2-parcels-irtx",
+    "modelData":  [
+        {
+            "name": "Persons",
+            "variableName": "FIN_PERSONS",
+            "description": "file for persons",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "file",
+                "dataType": "file",
+                "extension": "csv"
+            }
+        },
+        {
+            "name": "Homes",
+            "variableName": "FIN_HOMES",
+            "description": "file for homes",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "file",
+                "dataType": "file",
+                "extension": "gpkg"
+            }
+        },
+        {
+            "name": "Output directory",
+            "variableName": "output_path",
+            "description": "Path to the directory that will contain the model output (must exist)",
+            "isOutput": false,
+            "isOutputDir": true,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "string",
+                "description": "",
+                "dataType": "string",
+                "extension": null,
+                "validators": [
+                    {
+                        "name": "required",
+                        "description": "required",
+                        "validatorType": "required",
+                        "value": ""
+                    }
+                ],
+                "objectKeys": []
+            }
+        },
+        {
+            "name": "Persons",
+            "variableName": "persons",
+            "description": "file for the persons",
+            "isOutput": true,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "file",
+                "dataType": "file",
+                "extension": "csv"
+            }
+        },
+        {
+            "name": "Homes",
+            "variableName": "homes",
+            "description": "file for the homes",
+            "isOutput": true,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "file",
+                "dataType": "file",
+                "extension": "gpkg"
+            }
+        }
+    ]
+}
